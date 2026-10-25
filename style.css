@@ -1,0 +1,393 @@
+:root{
+  --palm:#17352A;        /* ليل النخيل */
+  --palm-deep:#0F241C;
+  --sand:#F2E9D5;        /* سمن بلدي */
+  --ivory:#FBF7EC;
+  --sadu-red:#9E2B25;    /* أحمر السدو */
+  --sadu-red-dark:#7E211C;
+  --gold:#D9A441;        /* ذهب زعفران */
+  --ink:#241E16;
+  --ink-soft:#5C5344;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(23,53,42,.12);
+  --font-display:'Lalezar', system-ui, sans-serif;
+  --font-body:'Readex Pro', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:var(--font-body);
+  background:var(--sand);
+  color:var(--ink);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* ====== شريط السدو (العنصر المميز) ====== */
+.sadu{
+  height:22px;
+  background:
+    repeating-linear-gradient(135deg, var(--gold) 0 8px, transparent 8px 16px),
+    repeating-linear-gradient(45deg,  var(--gold) 0 8px, transparent 8px 16px),
+    repeating-linear-gradient(90deg, var(--sadu-red) 0 34px, var(--palm) 34px 44px, var(--ivory) 44px 48px, var(--palm) 48px 58px);
+  background-blend-mode:normal;
+}
+.sadu--thin{height:10px}
+
+/* ====== الشريط العلوي ====== */
+.topbar{
+  background:var(--palm-deep);
+  color:var(--sand);
+  font-size:.82rem;
+  text-align:center;
+  padding:.45rem 1rem;
+  letter-spacing:.2px;
+}
+.topbar b{color:var(--gold);font-weight:600}
+
+/* ====== الترويسة ====== */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:var(--palm);
+  color:var(--ivory);
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+}
+.nav-wrap{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;gap:1.2rem;
+  padding:.7rem 1.25rem;
+}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand-mark{
+  width:46px;height:46px;border-radius:10px;
+  background:var(--sadu-red);
+  display:grid;place-items:center;flex:none;
+}
+.brand-name{font-family:var(--font-display);font-size:1.55rem;line-height:1;padding-top:.3rem}
+.brand-tag{font-size:.7rem;color:var(--gold);letter-spacing:.5px}
+nav.main{display:flex;gap:1.4rem;margin-inline-start:auto;font-size:.95rem}
+nav.main a{opacity:.9;padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+nav.main a:hover{opacity:1;border-color:var(--gold)}
+.cart-btn{
+  position:relative;
+  background:var(--sadu-red);color:#fff;
+  padding:.55rem 1.1rem;border-radius:999px;
+  font-family:var(--font-body);font-weight:600;font-size:.9rem;
+  display:flex;align-items:center;gap:.5rem;
+  transition:background .2s;
+}
+.cart-btn:hover{background:var(--sadu-red-dark)}
+.cart-count{
+  background:var(--gold);color:var(--palm-deep);
+  min-width:22px;height:22px;border-radius:999px;
+  display:grid;place-items:center;font-size:.78rem;font-weight:700;
+}
+.menu-toggle{display:none;color:var(--ivory);font-size:1.6rem;line-height:1}
+
+/* ====== البطل ====== */
+.hero{
+  background:var(--palm);
+  color:var(--ivory);
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{ /* نجوم صحراء خافتة */
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(217,164,65,.18) 1px, transparent 1.5px);
+  background-size:44px 44px;
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:1200px;margin:0 auto;
+  padding:4.5rem 1.25rem 5rem;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;
+  position:relative;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.6rem, 6vw, 4.4rem);
+  line-height:1.25;font-weight:400;
+}
+.hero h1 .accent{color:var(--gold)}
+.hero p.lead{
+  margin-top:1rem;font-size:1.08rem;color:#DCD3BE;max-width:32rem;font-weight:300;
+}
+.hero-actions{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 1.9rem;border-radius:999px;
+  font-weight:600;font-size:1rem;transition:.2s;
+}
+.btn-primary{background:var(--sadu-red);color:#fff}
+.btn-primary:hover{background:var(--sadu-red-dark);transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid var(--gold);color:var(--gold)}
+.btn-ghost:hover{background:var(--gold);color:var(--palm-deep)}
+.trust{
+  margin-top:2.6rem;display:flex;gap:1.8rem;flex-wrap:wrap;
+}
+.trust div{display:flex;align-items:center;gap:.55rem;font-size:.88rem;color:#DCD3BE}
+.trust svg{flex:none}
+.hero-art{
+  justify-self:center;
+  background:var(--ivory);
+  border-radius:20px;
+  padding:2rem 2rem 1.4rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  rotate:-2deg;
+  color:var(--ink);
+  width:min(340px, 100%);
+  text-align:center;
+}
+.hero-art .sadu--thin{border-radius:6px;margin-bottom:1.2rem}
+.hero-art h3{font-family:var(--font-display);font-size:1.5rem;color:var(--palm);font-weight:400}
+.hero-art .price-tag{
+  font-family:var(--font-display);font-size:2.6rem;color:var(--sadu-red);line-height:1.1;
+}
+.hero-art small{color:var(--ink-soft);font-size:.8rem}
+.hero-art .stamp{
+  margin:1.1rem auto 0;width:fit-content;
+  border:2px dashed var(--gold);color:var(--palm);
+  padding:.2rem 1rem;border-radius:999px;font-size:.78rem;font-weight:600;
+}
+
+/* ====== الأقسام العامة ====== */
+section{padding:4rem 1.25rem}
+.container{max-width:1200px;margin:0 auto}
+.sec-head{margin-bottom:2.2rem;text-align:center}
+.sec-head .eyebrow{
+  color:var(--sadu-red);font-weight:600;font-size:.85rem;letter-spacing:1px;
+}
+.sec-head h2{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.9rem, 4vw, 2.7rem);color:var(--palm);line-height:1.35;
+}
+.sec-head p{color:var(--ink-soft);max-width:38rem;margin:0 auto;font-size:.95rem}
+
+/* ====== التصنيفات ====== */
+.cats{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+.cat-chip{
+  padding:.5rem 1.4rem;border-radius:999px;
+  background:var(--ivory);border:1.5px solid #E0D5BC;
+  font-weight:500;font-size:.92rem;color:var(--ink-soft);transition:.2s;
+}
+.cat-chip:hover{border-color:var(--palm);color:var(--palm)}
+.cat-chip.active{background:var(--palm);border-color:var(--palm);color:var(--ivory)}
+
+/* ====== شبكة المنتجات ====== */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.4rem;
+}
+.card{
+  background:var(--ivory);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .2s, box-shadow .2s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(23,53,42,.18)}
+.card-media{
+  background:linear-gradient(160deg, var(--palm) 0%, var(--palm-deep) 100%);
+  padding:1.6rem;display:grid;place-items:center;position:relative;min-height:150px;
+}
+.card-media svg{width:86px;height:86px}
+.badge{
+  position:absolute;top:.8rem;inset-inline-start:.8rem;
+  background:var(--gold);color:var(--palm-deep);
+  font-size:.72rem;font-weight:700;padding:.15rem .7rem;border-radius:999px;
+}
+.card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.card-body h3{font-family:var(--font-display);font-weight:400;font-size:1.25rem;color:var(--palm)}
+.card-body .desc{font-size:.83rem;color:var(--ink-soft);line-height:1.7;flex:1}
+.meta{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--ink-soft)}
+.price{font-family:var(--font-display);font-size:1.5rem;color:var(--sadu-red);line-height:1}
+.price small{font-family:var(--font-body);font-size:.75rem;font-weight:600}
+.cut-select{
+  width:100%;padding:.5rem .8rem;border-radius:9px;
+  border:1.5px solid #E0D5BC;background:#fff;
+  font-family:var(--font-body);font-size:.85rem;color:var(--ink);
+}
+.add-btn{
+  margin-top:.3rem;
+  background:var(--palm);color:var(--ivory);
+  padding:.65rem;border-radius:10px;font-weight:600;font-size:.92rem;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  transition:background .2s;
+}
+.add-btn:hover{background:var(--sadu-red)}
+
+/* ====== طريقة الطلب ====== */
+.steps-band{background:var(--palm);color:var(--ivory)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.step{text-align:center;padding:0 .6rem}
+.step-num{
+  font-family:var(--font-display);font-size:2.4rem;color:var(--gold);line-height:1;
+}
+.step h3{font-family:var(--font-display);font-weight:400;font-size:1.3rem;margin:.5rem 0 .3rem}
+.step p{font-size:.88rem;color:#CFC6B0;font-weight:300}
+.steps-band .sec-head h2{color:var(--ivory)}
+.steps-band .sec-head .eyebrow{color:var(--gold)}
+
+/* ====== لماذا نحن ====== */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem;margin-top:2.4rem}
+.feat{
+  background:var(--ivory);border-radius:var(--radius);padding:1.6rem 1.4rem;
+  box-shadow:var(--shadow);text-align:center;
+}
+.feat .ic{
+  width:54px;height:54px;margin:0 auto .8rem;border-radius:14px;
+  background:var(--sand);display:grid;place-items:center;
+}
+.feat h3{font-family:var(--font-display);font-weight:400;font-size:1.15rem;color:var(--palm);margin-bottom:.3rem}
+.feat p{font-size:.85rem;color:var(--ink-soft)}
+
+/* ====== آراء العملاء ====== */
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;margin-top:2.4rem}
+.quote{
+  background:var(--ivory);border-radius:var(--radius);padding:1.6rem;
+  box-shadow:var(--shadow);position:relative;
+}
+.quote::before{
+  content:"";display:block;height:6px;border-radius:6px;margin-bottom:1rem;
+  background:repeating-linear-gradient(90deg, var(--sadu-red) 0 18px, var(--gold) 18px 26px, var(--palm) 26px 44px);
+}
+.quote p{font-size:.9rem;color:var(--ink);line-height:1.9}
+.quote footer{margin-top:.9rem;font-size:.82rem;color:var(--ink-soft);font-weight:600}
+.stars{color:var(--gold);letter-spacing:2px;font-size:.85rem}
+
+/* ====== التذييل ====== */
+footer.site{background:var(--palm-deep);color:#CFC6B0;font-size:.9rem}
+.foot-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:2.5rem;
+  padding:3.5rem 1.25rem 2.5rem;
+}
+.foot-grid h4{font-family:var(--font-display);font-weight:400;color:var(--ivory);font-size:1.2rem;margin-bottom:.8rem}
+.foot-grid ul{list-style:none;display:grid;gap:.45rem}
+.foot-grid a:hover{color:var(--gold)}
+.foot-note{
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;padding:1.1rem;font-size:.78rem;color:#8E8368;
+}
+.wa-link{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:.6rem;
+  background:#1F7A4D;color:#fff;padding:.55rem 1.2rem;border-radius:999px;font-weight:600;
+}
+.wa-link:hover{background:#176340;color:#fff}
+
+/* ====== سلة المشتريات ====== */
+.overlay{
+  position:fixed;inset:0;background:rgba(15,36,28,.55);
+  opacity:0;pointer-events:none;transition:opacity .25s;z-index:90;
+}
+.overlay.show{opacity:1;pointer-events:auto}
+.cart-drawer{
+  position:fixed;top:0;bottom:0;right:0;
+  width:min(400px, 92vw);
+  background:var(--ivory);z-index:100;
+  transform:translateX(110%);
+  visibility:hidden;
+  transition:transform .3s ease, visibility 0s linear .3s;
+  display:flex;flex-direction:column;
+  box-shadow:-12px 0 40px rgba(0,0,0,.3);
+}
+.cart-drawer.open{
+  transform:translateX(0);
+  visibility:visible;
+  transition:transform .3s ease, visibility 0s;
+}
+.cart-head{
+  background:var(--palm);color:var(--ivory);
+  padding:1.1rem 1.3rem;display:flex;align-items:center;justify-content:space-between;
+}
+.cart-head h3{font-family:var(--font-display);font-weight:400;font-size:1.35rem}
+.cart-close{color:var(--ivory);font-size:1.7rem;line-height:1}
+.cart-items{flex:1;overflow-y:auto;padding:1.2rem 1.3rem;display:grid;gap:1rem;align-content:start}
+.cart-empty{text-align:center;color:var(--ink-soft);padding:3rem 1rem}
+.cart-empty svg{margin:0 auto 1rem;opacity:.4}
+.c-item{
+  display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;
+  background:#fff;border:1px solid #EDE4CE;border-radius:12px;padding:.8rem;
+}
+.c-thumb{
+  width:52px;height:52px;border-radius:10px;flex:none;
+  background:var(--palm);display:grid;place-items:center;
+}
+.c-thumb svg{width:34px;height:34px}
+.c-info h4{font-size:.9rem;font-weight:600;color:var(--palm)}
+.c-info .cut{font-size:.74rem;color:var(--ink-soft)}
+.c-info .p{font-size:.85rem;color:var(--sadu-red);font-weight:700}
+.c-actions{display:grid;gap:.4rem;justify-items:center}
+.qty{display:flex;align-items:center;gap:.5rem;background:var(--sand);border-radius:999px;padding:.15rem .5rem}
+.qty button{width:24px;height:24px;font-size:1rem;font-weight:700;color:var(--palm)}
+.qty span{min-width:20px;text-align:center;font-weight:600;font-size:.9rem}
+.rm{font-size:.72rem;color:var(--sadu-red);text-decoration:underline}
+.cart-foot{border-top:2px solid var(--sand);padding:1.2rem 1.3rem;display:grid;gap:.8rem}
+.total-row{display:flex;justify-content:space-between;align-items:center}
+.total-row span{color:var(--ink-soft);font-size:.9rem}
+.total-row b{font-family:var(--font-display);font-size:1.7rem;color:var(--sadu-red);font-weight:400}
+.checkout{
+  background:#1F7A4D;color:#fff;padding:.9rem;border-radius:12px;
+  font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem;
+}
+.checkout:hover{background:#176340}
+.cart-note{font-size:.72rem;color:var(--ink-soft);text-align:center}
+
+/* ====== إشعار الإضافة ====== */
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;
+  transform:translate(-50%, 200%);
+  opacity:0;visibility:hidden;
+  background:var(--palm);color:var(--ivory);
+  padding:.75rem 1.6rem;border-radius:999px;font-size:.9rem;font-weight:600;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:120;
+  transition:transform .3s ease, opacity .3s ease, visibility 0s linear .3s;
+  display:flex;gap:.5rem;align-items:center;white-space:nowrap;
+}
+.toast.show{
+  transform:translate(-50%, 0);opacity:1;visibility:visible;
+  transition:transform .3s ease, opacity .3s ease, visibility 0s;
+}
+.toast .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* ====== التجاوب ====== */
+@media (max-width: 900px){
+  .hero-inner{grid-template-columns:1fr;padding:3rem 1.25rem 3.5rem;text-align:center}
+  .hero p.lead{margin-inline:auto}
+  .hero-actions,.trust{justify-content:center}
+  .hero-art{rotate:0deg}
+  .steps{grid-template-columns:1fr;gap:2.2rem}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media (max-width: 760px){
+  nav.main{
+    position:fixed;inset:0;top:0;
+    background:var(--palm-deep);
+    flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+    font-size:1.3rem;
+    transform:translateY(-100%);transition:transform .3s;z-index:80;
+  }
+  nav.main.open{transform:translateY(0)}
+  .menu-toggle{display:block;z-index:85;position:relative}
+  .brand-tag{display:none}
+}
+@media (max-width: 520px){
+  section{padding:3rem 1rem}
+  .foot-grid{grid-template-columns:1fr;padding-inline:1rem}
+  .grid{grid-template-columns:1fr 1fr;gap:.9rem}
+  .card-media{min-height:110px;padding:1rem}
+  .card-media svg{width:60px;height:60px}
+  .card-body{padding:.8rem .85rem 1rem}
+  .card-body h3{font-size:1.05rem}
+  .desc{display:none}
+}
+@media (max-width: 380px){
+  .grid{grid-template-columns:1fr}
+  .desc{display:block}
+}
